@@ -1,0 +1,198 @@
+<div class="container">
+  <div class="system-container hide">
+    <strong>System</strong>
+    <textarea
+      id="system"
+      placeholder="Enter the system description"
+      class="system"
+    ></textarea>
+  </div>
+
+  <div class="chat-container">
+    <h1 class="title" id="title">{{ title }}</h1>
+
+    {% if initial_message %}
+    <div class="chat-message">
+      <strong>ASSISTANT</strong>
+      <span class="gpt-message">{{ initial_message }}</span>
+    </div>
+    {% endif %} {% if messages %} {% for message in messages %}
+    <div class="chat-message">
+      <strong>USER</strong>
+      <span class="user-message">{{ message.user_message }}</span>
+    </div>
+    <div class="chat-message">
+      <strong>ASSISTANT</strong>
+      <span class="gpt-message">{{ message.gpt_message }}</span>
+    </div>
+    {% endfor %} {% endif %}
+
+    <div id="new-message-container"></div>
+
+    <div class="error-container hide">
+      <span class="error-message" id="error-message"
+        >This is a warning message.</span
+      >
+    </div>
+
+    <div class="input-container" id="input-container">
+      <strong>USER</strong>
+      <textarea
+        id="student-message"
+        name="message"
+        placeholder="Type your message..."
+        class="submit-answer"
+        rows="1"
+      ></textarea>
+      <button type="submit" class="submit-message">Submit</button>
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="parameters-container hide">
+    <div class="ml10">
+      <label>Title</label>
+      <input
+        id="input-title"
+        type="text"
+        name="input-title"
+        placeholder="Change Title"
+        class="input-title"
+        tabindex="1"
+      />
+    </div>
+    <div class="ml10 mt15">
+      <label>Api Key</label>
+      <input
+        id="api-key"
+        type="text"
+        name="api-key"
+        placeholder="ChatGPT API Key"
+        class="input-title"
+        tabindex="1"
+      />
+    </div>
+
+    <div class="dropdown ml10 mt15">
+      <label>Model</label>
+      <button class="dropdown-toggle">Select Model</button>
+      <div class="dropdown-content">
+        <a href="#">text-davinci-003</a>
+        <a href="#">text-davinci-002</a>
+        <a href="#">text-curie-001</a>
+        <a href="#">text-babbage-001</a>
+        <a href="#">text-ada-001</a>
+      </div>
+    </div>
+
+    <div class="mt15 ml10">
+      <label>Temperature</label>
+      <input
+        class="range-value"
+        type="number"
+        id="temperatureValue"
+        value="0"
+        oninput="temperature.value=value"
+      />
+      <input
+        type="range"
+        min="0"
+        max="2"
+        step="0.1"
+        value="0"
+        id="temperature"
+        oninput="temperatureValue.value=value"
+        class="range"
+      />
+    </div>
+
+    <div class="mt15 ml10">
+      <label>Maximum Length</label>
+      <input
+        class="range-value"
+        type="number"
+        id="maxLengthValue"
+        value="0"
+        oninput="maxLength.value=value"
+      />
+      <input
+        type="range"
+        min="0"
+        max="4000"
+        step="1"
+        value="0"
+        id="maxLength"
+        oninput="maxLengthValue.value=value"
+        class="range"
+      />
+    </div>
+
+    <div class="mt15 ml10">
+      <label>Top P</label>
+      <input
+        class="range-value"
+        type="number"
+        id="topPValue"
+        value="0"
+        oninput="topP.value=value"
+      />
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.1"
+        value="0"
+        id="topP"
+        oninput="topPValue.value=value"
+        class="range"
+      />
+    </div>
+
+    <div class="mt15 ml10">
+      <label>Frequency Penalty</label>
+      <input
+        class="range-value"
+        type="number"
+        id="frequencyPenaltyValue"
+        value="0"
+        oninput="frequencyPenalty.value=value"
+      />
+      <input
+        type="range"
+        min="0"
+        max="2"
+        step="0.01"
+        value="0"
+        id="frequencyPenalty"
+        oninput="frequencyPenaltyValue.value=value"
+        class="range"
+      />
+    </div>
+
+    <div class="mt15 ml10">
+      <label>Presence Penalty</label>
+      <input
+        class="range-value"
+        type="number"
+        id="presencePenaltyValue"
+        value="0"
+        oninput="presencePenalty.value=value"
+      />
+      <input
+        type="range"
+        min="0"
+        max="2"
+        step="0.01"
+        value="0"
+        id="presencePenalty"
+        oninput="presencePenaltyValue.value=value"
+        class="range"
+      />
+    </div>
+  </div>
+</div>
